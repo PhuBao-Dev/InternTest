@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Form</title>
+    <!-- CSS only -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+</head>
+
+<body>
+    <div class="container">
+        <h1 class="mt-4 text-center">Contact</h1>
+
+        <form action="/submit" method="POST">
+            <div class="mb-3">
+                <label for="exampleFormControlInput1" class="form-label">Họ và tên</label>
+                <input type="fullname" class="form-control" id="fullnameInput" name="fullname"
+                    placeholder="Nguyen Van A">
+            </div>
+            <div class="mb-3">
+                <label for="exampleFormControlInput1" class="form-label">Email address</label>
+                <input type="email" class="form-control" id="emailInput" name="email" placeholder="name@example.com">
+            </div>
+            <div class="mb-3">
+                <label for="exampleFormControlInput1" class="form-label">Số điện thoại</label>
+                <input type="number" class="form-control" id="numberInput" name="numberphone" placeholder="0xxx">
+            </div>
+            <div class="mb-3">
+                <label for="exampleFormControlTextarea1" class="form-label">Nội dung liên hệ</label>
+                <textarea class="form-control" id="contentInput" name="content" rows="3"></textarea>
+            </div>
+
+            <button type="submit" class="btn btn-primary">Submit</button>
+            <button type="button" class="btn btn-secondary" id="clearBtn">Clear</button>
+        </form>
+        <div class="dropdown-divider mt-4"></div>
+        <h1 class="mt-4 text-center">Database</h1>
+
+        <table class="table table-striped mb-5">
+            <thead>
+                <tr>
+                    <th scope="col">#</th>
+                    <th scope="col-2">Họ và tên</th>
+                    <th scope="col-2">Email</th>
+                    <th scope="col-2">Số điện thoại</th>
+                    <th scope="col">Nội dung</th>
+                </tr>
+            </thead>
+            <tbody>
+                <% infors.forEach((element, index)=> { %>
+                    <tr>
+                        <th scope="row">
+                            <%= index+1 %>
+                        </th>
+                        <td>
+                            <%= element.fullname %>
+                        </td>
+                        <td>
+                            <%= element.email %>
+                        </td>
+                        <td>
+                            <%= element.numberphone %>
+                        </td>
+                        <td>
+                            <%= element.content %>
+                        </td>
+                    </tr>
+                    <% }); %>
+            </tbody>
+        </table>
+
+    </div>
+
+    <script>
+        var clr = document.getElementById('clearBtn')
+        clr.onclick = () => {
+            console.log('Handling')
+            document.getElementById('fullnameInput').value = ""
+            document.getElementById('emailInput').value = ""
+            document.getElementById('numberInput').value = ""
+            document.getElementById('contentInput').value = ""
+        }
+
+    </script>
+
+
+</body>
+
+</html>
